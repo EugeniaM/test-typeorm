@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      TypeORM Demo
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <button ion-button (click)="runSQL()">Run SQL</button>
+
+  <ion-list>
+    <ion-item>
+      <ion-spinner *ngIf="!savedPost" item-start></ion-spinner>
+      <ion-icon *ngIf="savedPost" name="checkmark" item-start color="secondary"></ion-icon>
+      <span>Post saved</span>
+    </ion-item>
+    <ion-item-divider color="primary">Loaded Post</ion-item-divider>
+    <ion-item *ngIf="!loadedPost">Post not loaded</ion-item>
+    <div *ngIf="loadedPost">
+      <ion-item-group *ngFor="let post of loadedPost">
+        <ion-item>ID: {{post?.id}}</ion-item>
+        <ion-item>Title: {{post?.Title}}</ion-item>
+        <ion-item>Author: {{post?.author.name}}</ion-item>
+        <!--<ion-item>Categories: {{getCategories()}}</ion-item>-->
+      </ion-item-group>
+    </div>
+
+  </ion-list>
+</ion-content>
