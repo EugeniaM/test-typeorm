@@ -46,15 +46,15 @@ export class HomePage {
     console.log("Post has been saved");
     this.savedPost = true;
 
-    const loadedPost = await postRepository.createQueryBuilder('post')
-      .innerJoinAndSelect('post.author', 'author')
-      .innerJoinAndSelect('post.categories', 'categories')
-      // .where('post.id = :id', {id: post.id})
-      .getMany();
-      // .getOne();
+    // const loadedPost = await postRepository.createQueryBuilder('post')
+    //   .innerJoinAndSelect('post.author', 'author')
+    //   .innerJoinAndSelect('post.categories', 'categories')
+    //   // .where('post.id = :id', {id: post.id})
+    //   .getMany();
+    const loadedPosts = await postRepository.find();
 
-    console.log("Post has been loaded: ", loadedPost);
-    this.loadedPost = loadedPost;
+    console.log("Post has been loaded: ", loadedPosts);
+    this.loadedPost = loadedPosts;
   }
 
   async runSQL() {
